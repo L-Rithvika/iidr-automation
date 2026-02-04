@@ -1,0 +1,28 @@
+bash
+# Set session type to CDC (Required for batch mode)
+CHCCLP session set to cdc;
+
+# 1. Connect to Access Server
+# You can use GitHub Secrets to populate these values in your pipeline
+connect server hostname "as-hostname" port 10101 username "admin" password "mypassword";
+
+# 2. Connect to Source and Target Datastores
+connect datastore name "SRC_DB" context source;
+connect datastore name "TGT_DB" context target;
+
+# 3. Create and Select a Subscription
+# Note: First 8 characters of subscription name must be unique for the source
+add subscription name "SUB_AUTO";
+select subscription name "SUB_AUTO";
+
+# 4. Map a Table
+# Maps source schema.table to target schema.table
+add table mapping sourceSchema "HR" sourceTable "EMPLOYEES" targetSchema "HR_TGT" targetTable "EMPLOYEES";
+
+# 5. Start Replication
+# Uses 'mirroring' for continuous data movement
+start mirroring;
+
+# 6. Clean Up
+disconnect server;
+quit;
