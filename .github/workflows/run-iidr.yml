@@ -1,0 +1,11 @@
+name: Execute IIDR Replicationon: 
+  workflow_dispatch: # This adds a "Run" button in the GitHub UIjobs:
+  replication-task:
+    runs-on: self-hosted  # This tells GitHub to use your server, not their cloudsteps:
+      - name: Pull Script from Repo
+        uses: actions/checkout@v4
+
+      - name: Execute CHCCLP Script
+        run: |
+          # Use the path to the chcclp tool you found earlier
+          "C:\Program Files (x86)\IBM\InfoSphere Data Replication\Management Console\bin\chcclp.exe" -f scripts/iidr/your_script.chccl
