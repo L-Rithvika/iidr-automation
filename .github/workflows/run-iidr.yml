@@ -8,4 +8,4 @@ name: Execute IIDR Replicationon:
       - name: Execute CHCCLP Script
         run: |
           # Use the path to the chcclp tool you found earlier
-          "C:\Program Files (x86)\IBM\InfoSphere Data Replication\Management Console\bin\chcclp.exe" -f scripts/iidr/your_script.chccl
+          "C:\Program Files (x86)\IBM\InfoSphere Data Replication\Management Console\bin\chcclp.exe" -f scripts/iidr/deploy_replication.chccl
